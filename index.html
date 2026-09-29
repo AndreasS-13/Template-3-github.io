@@ -1,146 +1,812 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Richard Hanrick - Portfólio</title>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de [Seu Nome] - QA Tester Júnior. Garantindo a qualidade e confiabilidade em softwares.">
+    <title>[Seu Nome] | QA Tester</title>
 
-  <!-- Estilos CSS Embutidos -->
-  <style>
-    :root {
-      --bg-color: #121212;
-      --card-color: #1e1e1f;
-      --text-color: #d6d6d6;
-      --accent-color: #ffdb70;
-      --border-color: #383838;
-    }
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+        /* ==========================================================================
+           VARIÁVEIS DE ESTILO E TEMA
+           ========================================================================== */
+        :root {
+            --bg-color: #0f172a;        /* Fundo escuro elegante */
+            --surface-color: #1e293b;   /* Fundo de cards/seções */
+            --primary-color: #8b5cf6;   /* Violeta (Destaque principal) */
+            --primary-hover: #7c3aed;   
+            --secondary-color: #38bdf8; /* Azul claro para tags e badges */
+            --text-main: #f8fafc;       /* Texto branco suave */
+            --text-muted: #94a3b8;      /* Texto cinza para subtítulos */
+            --border-color: #334155;
+            --transition: all 0.3s ease;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+        /* ==========================================================================
+           RESET E BASE
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .container {
-      width: 100%;
-      max-width: 450px;
-      background: var(--card-color);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
+        html {
+            scroll-behavior: smooth; /* Scroll suave nativo */
+        }
 
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-      border: 3px solid var(--accent-color);
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    h1 {
-      font-size: 24px;
-      color: #fff;
-      margin-bottom: 5px;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    p.title {
-      font-size: 14px;
-      color: var(--accent-color);
-      margin-bottom: 20px;
-    }
+        ul {
+            list-style: none;
+        }
 
-    .bio {
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-    .links-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+        /* Acessibilidade: Link "Ir para o conteúdo" (Invisível até receber foco) */
+        .skip-to-content {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 8px 16px;
+            z-index: 9999;
+            transition: top 0.2s;
+        }
+        .skip-to-content:focus {
+            top: 0;
+        }
 
-    .link-item a {
-      display: block;
-      background: #2b2b2c;
-      color: #fff;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 500;
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-    }
+        /* ==========================================================================
+           LAYOUT GLOBAL E CLASSES UTILITÁRIAS
+           ========================================================================== */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .link-item a:hover {
-      background: var(--accent-color);
-      color: #121212;
-      border-color: var(--accent-color);
-    }
+        .section {
+            padding: 80px 0;
+        }
 
-    .footer {
-      margin-top: 25px;
-      font-size: 11px;
-      color: #777;
-    }
-  </style>
+        .section-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           HEADER & NAVEGAÇÃO
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* ==========================================================================
+           HERO SECTION (APRESENTAÇÃO)
+           ========================================================================== */
+        .hero {
+            padding: 150px 0 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--text-main), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface-color);
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+        }
+
+        .areas-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .area-tag {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ==========================================================================
+           PROJETOS SECTION
+           ========================================================================== */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .project-severity {
+            font-size: 0.75rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Classe utilitária para o JS esconder cards filtrados */
+        .hidden {
+            display: none !important;
+        }
+
+        /* ==========================================================================
+           PERFIL & COMPETÊNCIAS SECTION
+           ========================================================================== */
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bio {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .bio p {
+            margin-bottom: 15px;
+        }
+
+        .bio strong {
+            color: var(--text-main);
+        }
+
+        .skills-container h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-item {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        /* ==========================================================================
+           CONTATO SECTION
+           ========================================================================== */
+        .contact {
+            text-align: center;
+            background: var(--surface-color);
+            border-radius: 20px;
+            padding: 60px 20px;
+            margin-top: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-phrase {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-status .dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .back-to-top {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover {
+            color: var(--primary-color);
+        }
+
+        /* ==========================================================================
+           MEDIA QUERIES (RESPONSIVIDADE)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none; /* Em um projeto real maior, aqui entraria um menu hambúrguer */
+            }
+            .footer-content {
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- Avatar (Usando uma imagem placeholder da internet ou você pode colocar sua URL) -->
-    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces" alt="Avatar" class="avatar">
-    
-    <h1>Seu Nome</h1>
-    <p class="title">Desenvolvedor Web & UI/UX</p>
-    
-    <p class="bio">
-      Transformando problemas complexos em designs simples, intuitivos e modernos. Bem-vindo ao meu portfólio pessoal!
-    </p>
+    <!-- Link para pular direto para o conteúdo (Acessibilidade) -->
+    <a href="#main-content" class="skip-to-content">Ir para o conteúdo principal</a>
 
-    <ul class="links-list">
-      <li class="link-item">
-        <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
-      </li>
-      <li class="link-item">
-        <a href="https://linkedin.com/in/seu-usuario" target="_blank">LinkedIn</a>
-      </li>
-      <li class="link-item">
-        <a href="mailto:seu-email@exemplo.com">Enviar E-mail</a>
-      </li>
-      <li class="link-item">
-        <a href="https://seuportfolio.com" target="_blank">Portfólio / Site Principal</a>
-      </li>
-    </ul>
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="container navbar">
+            <!-- Substitua as iniciais -->
+            <a href="#" class="logo" aria-label="Logo [DL]">[DL]</a>
+            
+            <nav aria-label="Navegação principal">
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#perfil">Perfil</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="footer">
-      &copy; 2026 - Hospedado no GitHub Pages
-    </div>
-  </div>
+    <main id="main-content">
+        
+        <!-- SEÇÃO HERO -->
+        <section id="inicio" class="hero container" aria-label="Apresentação Principal">
+            <span class="badge"><i class="fa-solid fa-check-double"></i> QA Tester Júnior</span>
+            <h1>Tecnologia que facilita | Experiência que surpreende</h1>
+            <p>
+                Garantindo a qualidade, segurança e usabilidade de aplicações através de um olhar analítico e metodologias ágeis de testes de software.
+            </p>
+            
+            <div class="cta-group">
+                <a href="#projetos" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i> Explorar projetos
+                </a>
+                <a href="#perfil" class="btn btn-secondary">
+                    <i class="fa-regular fa-id-card"></i> Ver competências
+                </a>
+            </div>
 
+            <div class="areas-list" aria-label="Áreas de atuação">
+                <span class="area-tag"><i class="fa-solid fa-globe"></i> Web</span>
+                <span class="area-tag"><i class="fa-solid fa-mobile-screen-button"></i> Mobile</span>
+                <span class="area-tag"><i class="fa-solid fa-server"></i> API</span>
+                <span class="area-tag"><i class="fa-solid fa-robot"></i> Automação</span>
+            </div>
+        </section>
+
+        <!-- SEÇÃO PROJETOS -->
+        <section id="projetos" class="section container">
+            <div class="section-header">
+                <h2 class="section-title">Projetos Selecionados</h2>
+                <p class="section-subtitle">Aplicações reais testadas com foco no usuário e prevenção de falhas.</p>
+            </div>
+
+            <!-- Filtros Interativos -->
+            <div class="filters" aria-label="Filtro de Projetos" role="group">
+                <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
+                <button class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+                <button class="filter-btn" data-filter="mobile" aria-pressed="false">Mobile</button>
+                <button class="filter-btn" data-filter="api" aria-pressed="false">API</button>
+                <button class="filter-btn" data-filter="automacao" aria-pressed="false">Automação</button>
+            </div>
+
+            <div class="projects-grid" id="project-list">
+                
+                <!-- Projeto 1 -->
+                <article class="project-card" data-category="web">
+                    <div class="project-header">
+                        <span class="project-tag">Web</span>
+                        <span class="project-severity"><i class="fa-solid fa-circle-exclamation"></i> Crítico</span>
+                    </div>
+                    <h3 class="project-title">Checkout de E-commerce</h3>
+                    <p class="project-desc">
+                        Plano de testes E2E focado na jornada de compra, cálculo de frete e validação de cupons promocionais.
+                        <strong>Cobertura:</strong> Testes Funcionais, Exploratórios e UI.
+                    </p>
+                    <a href="#" class="project-link" aria-label="Ver detalhes do caso de teste no GitHub">
+                        Ver caso de teste <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <!-- Projeto 2 -->
+                <article class="project-card" data-category="api automacao">
+                    <div class="project-header">
+                        <span class="project-tag">API / Automação</span>
+                        <span class="project-severity"><i class="fa-solid fa-bolt"></i> Alto</span>
+                    </div>
+                    <h3 class="project-title">Gateway de Pagamentos API</h3>
+                    <p class="project-desc">
+                        Automação de testes de endpoint utilizando Postman e Newman. Validação de contratos, tokens de autorização e status codes.
+                        <strong>Cobertura:</strong> Testes de Contrato, Integração e Carga.
+                    </p>
+                    <a href="#" class="project-link" aria-label="Ver repositório no GitHub">
+                        Ver no GitHub <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <!-- Projeto 3 -->
+                <article class="project-card" data-category="mobile">
+                    <div class="project-header">
+                        <span class="project-tag">Mobile</span>
+                        <span class="project-severity"><i class="fa-solid fa-eye"></i> Médio</span>
+                    </div>
+                    <h3 class="project-title">App de Delivery (iOS/Android)</h3>
+                    <p class="project-desc">
+                        Testes de usabilidade e regressão mapeando o fluxo de rastreamento de pedidos em tempo real. Levantamento de bugs de interface.
+                        <strong>Cobertura:</strong> Testes Manuais, Usabilidade e Regressão.
+                    </p>
+                    <a href="#" class="project-link" aria-label="Ver relatório de bugs">
+                        Ver relatório de bugs <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+                
+                <!-- Projeto 4 -->
+                <article class="project-card" data-category="automacao web">
+                    <div class="project-header">
+                        <span class="project-tag">Automação Web</span>
+                        <span class="project-severity"><i class="fa-solid fa-shield-halved"></i> Crítico</span>
+                    </div>
+                    <h3 class="project-title">Automação de Login e Cadastro</h3>
+                    <p class="project-desc">
+                        Scripts escritos em Cypress seguindo boas práticas de Page Objects. Cenários mapeados utilizando BDD com Gherkin.
+                        <strong>Cobertura:</strong> Testes E2E Automatizados.
+                    </p>
+                    <a href="#" class="project-link" aria-label="Ver repositório de automação">
+                        Ver código-fonte <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO PERFIL & COMPETÊNCIAS -->
+        <section id="perfil" class="section container">
+            <div class="section-header">
+                <h2 class="section-title">Perfil Profissional</h2>
+                <p class="section-subtitle">Visão analítica aliada ao desenvolvimento.</p>
+            </div>
+
+            <div class="profile-content">
+                <div class="bio">
+                    <p>Olá! Meu nome é <strong>[Seu Nome]</strong>, sou apaixonado(a) por garantir que os softwares funcionem exatamente como deveriam — ou melhor.</p>
+                    <p>Minha trajetória no QA é guiada por uma <strong>visão analítica aguçada</strong> e um forte senso de empatia pelo usuário final. Acredito que o papel do QA vai muito além de "caçar bugs"; trata-se de colaborar ativamente com desenvolvedores e Product Owners para construir uma cultura de qualidade desde a concepção do código.</p>
+                    <p>Atualmente, foco em aprimorar minhas habilidades em automação de testes, buscando sempre reduzir o esforço manual e aumentar a confiabilidade das entregas.</p>
+                </div>
+
+                <div class="skills-container">
+                    <h3>Hard Skills (Ferramentas & Metodologias)</h3>
+                    <div class="skills-grid" aria-label="Lista de competências técnicas">
+                        <span class="skill-item" title="Automação E2E"><i class="fa-solid fa-code"></i> Cypress</span>
+                        <span class="skill-item" title="Testes de API"><i class="fa-solid fa-rocket"></i> Postman</span>
+                        <span class="skill-item" title="Linguagem de testes"><i class="fa-solid fa-comments"></i> BDD (Gherkin)</span>
+                        <span class="skill-item" title="Automação Web"><i class="fa-solid fa-robot"></i> Selenium</span>
+                        <span class="skill-item" title="Gestão de Projetos Ágeis"><i class="fa-brands fa-jira"></i> Jira</span>
+                        <span class="skill-item" title="Versionamento"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+                        <span class="skill-item" title="Banco de Dados"><i class="fa-solid fa-database"></i> SQL Básico</span>
+                        <span class="skill-item" title="Testes Exploratórios"><i class="fa-solid fa-hand-pointer"></i> Testes Manuais</span>
+                        <span class="skill-item" title="Desenvolvimento Web"><i class="fa-brands fa-html5"></i> HTML/CSS/JS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO CONTATO -->
+        <section id="contato" class="section container">
+            <div class="contact">
+                <h2 class="contact-phrase">Pronto para elevar a qualidade do seu projeto?</h2>
+                <div class="contact-status">
+                    <span class="dot"></span> Disponível para novas oportunidades (Remoto/Híbrido)
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/[SEU_LINKEDIN]" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Visite meu LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/[SEU_GITHUB]" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Visite meu GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="mailto:[SEU_EMAIL]@gmail.com" class="social-btn" aria-label="Me envie um e-mail">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="https://wa.me/55[SEU_NUMERO]" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Me mande um WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="container">
+        <div class="footer-content">
+            <p class="copyright">&copy; 2026 [Seu Nome]. Todos os direitos reservados.</p>
+            <a href="#" class="back-to-top" aria-label="Voltar ao topo da página">
+                <i class="fa-solid fa-arrow-up"></i> Voltar ao topo
+            </a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: Lógica de Filtro dos Projetos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Lógica de Filtro dos Cards de Projeto
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove a classe 'active' e 'aria-pressed' de todos os botões
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-pressed', 'false');
+                    });
+                    
+                    // Adiciona a classe 'active' ao botão clicado
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-pressed', 'true');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // Filtra os projetos
+                    projectCards.forEach(card => {
+                        const categories = card.getAttribute('data-category').split(' ');
+
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Atualiza os links ativos do Navbar ao rolar a página
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Subtrai um offset (ex: altura do header)
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').includes(current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
