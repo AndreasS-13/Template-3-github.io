@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richard Hanrick - Portfólio</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos CSS Embutidos -->
+  <style>
+    :root {
+      --bg-color: #121212;
+      --card-color: #1e1e1f;
+      --text-color: #d6d6d6;
+      --accent-color: #ffdb70;
+      --border-color: #383838;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 450px;
+      background: var(--card-color);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--accent-color);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    p.title {
+      font-size: 14px;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+    }
+
+    .bio {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-item a {
+      display: block;
+      background: #2b2b2c;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .link-item a:hover {
+      background: var(--accent-color);
+      color: #121212;
+      border-color: var(--accent-color);
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 11px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Avatar (Usando uma imagem placeholder da internet ou você pode colocar sua URL) -->
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces" alt="Avatar" class="avatar">
+    
+    <h1>Seu Nome</h1>
+    <p class="title">Desenvolvedor Web & UI/UX</p>
+    
+    <p class="bio">
+      Transformando problemas complexos em designs simples, intuitivos e modernos. Bem-vindo ao meu portfólio pessoal!
+    </p>
+
+    <ul class="links-list">
+      <li class="link-item">
+        <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
+      </li>
+      <li class="link-item">
+        <a href="https://linkedin.com/in/seu-usuario" target="_blank">LinkedIn</a>
+      </li>
+      <li class="link-item">
+        <a href="mailto:seu-email@exemplo.com">Enviar E-mail</a>
+      </li>
+      <li class="link-item">
+        <a href="https://seuportfolio.com" target="_blank">Portfólio / Site Principal</a>
+      </li>
+    </ul>
+
+    <div class="footer">
+      &copy; 2026 - Hospedado no GitHub Pages
+    </div>
+  </div>
+
+</body>
+</html>
